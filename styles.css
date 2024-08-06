@@ -198,10 +198,43 @@ span{
  }
 .services-box h3{
     font-size: 1.8rem;
+    color: var(--main-color);
 }
 
 .services-box p {
     font-size: 1.2rem;
     margin: 1rem 0 3rem;
 }
-
+.portfolio {
+background: var(--snd-bf-color);
+}
+.portfolio h2{
+    margin-bottom: 4rem;
+}
+.portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 2.5rem;
+}
+.portfolio-container .portfolio-box{
+    align-items: center;
+    position: relative;
+    border-radius: 5 rem;
+    box-shadow: 0 0 1rem var(--main-color);
+    overflow: hidden;
+    display: flex;
+}
+.portfolio-container .portfolio-box:hover {
+    border-color: var(--main-color);
+    transform: scale(1.02);
+}
+.portfolio-layer{
+align-content: center;
+}
+.portfolio-layer h4{
+    color: var(--main-color);
+    margin-left: 2rem;
+    margin-top: 2rem;
+   
+}
