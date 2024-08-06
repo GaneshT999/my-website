@@ -206,7 +206,7 @@ span{
     margin: 1rem 0 3rem;
 }
 .portfolio {
-background: var(--snd-bf-color);
+background: var(--snd-bf-color)
 }
 .portfolio h2{
     margin-bottom: 4rem;
