@@ -229,9 +229,7 @@ background: var(--snd-bf-color);
     border-color: var(--main-color);
     transform: scale(1.02);
 }
-.portfolio-layer{
-align-content: center;
-}
+
 .portfolio-layer h4{
     color: var(--main-color);
     margin-left: 2rem;
