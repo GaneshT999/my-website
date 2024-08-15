@@ -1,46 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 * {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     text-decoration: none;
     border: none;
     outline: none;
-    scroll-behavior:smooth;
+    scroll-behavior: smooth;
     font-family: 'Nunito', sans-serif;
 }
-:root{
+
+:root {
     --bg-color: #020513;
     --snd-bf-color: #0e3a3d;
     --text-color: #fff;
-    --main-color: #7c9b51;
+    --main-color: #21847d;
 }
 
-html{
+html {
     font-size: 62.5%;
     overflow-x: hidden;
 }
-body{
+
+body {
     background: var(--bg-color);
     color: var(--text-color);
 }
-section{
-    min-height:100vh;
+
+section {
+    min-height: 100vh;
     padding: 10rem 9% 2rem;
 }
-.header{
-    position:fixed;
-    top:0;
+
+.header {
+    position: fixed;
+    top: 0;
     left: 0;
     width: 100%;
     padding: 2rem 9%;
-    background: var(--bg-color);
-    display:flex;
+    background: rgba(2, 5, 19, 0.3);
+    backdrop-filter: blur(30px);
+    display: flex;
     justify-content: space-between;
-    align-items:center;
-    z-index:100;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Optional: Add a subtle shadow for better readability */
 }
+
 .logo {
     font-size: 2.5rem;
     color: var(--main-color);
@@ -48,6 +56,10 @@ section{
     cursor: default;
     text-decoration: none;
 }
+#menu-icon {
+    display: none;
+}
+
 .navbar a {
     font-size: 1.5rem;
     color: var(--text-color);
@@ -56,54 +68,49 @@ section{
     text-decoration: none;
 }
 
-    .navbar a:hover,
-    .navbar a.active {
-        color: var(--main-color);
-    }
-#menu-icon{
+.navbar a:hover,
+.navbar a.active {
+    color: var(--main-color);
+}
+
+#menu-icon {
     font-size: 3.6rem;
     color: var(--text-color);
     display: none;
 }
-.home{
+
+.home {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 2rem;
 }
-.home-content h3{
-    font-size:3.2rem;
+
+.home-content h3 {
+    font-size: 3.2rem;
     font-weight: 700;
 }
 
-.home-content h3:nth-of-type(2){
-    margin-bottom:2rem;
+.home-content h3:nth-of-type(2) {
+    margin-bottom: 2rem;
 }
-span{
+
+span {
     color: var(--main-color);
 }
 
-.home-content h1{
+.home-content h1 {
     font-size: 5.6rem;
     font-weight: 700;
     line-height: 1.3;
 }
-.home-img img{
+
+.home-img img {
     width: 20vw;
-    animation: floatImage 4s ease-in-out infinite;
-}
-@keyframes floatImage{
-    0% {
-        transform: translateY(0);
-    }
-    50%{
-        transform: translateY(-2.4rem);
-    }
-    100%{
-        transform: translateY(0);
-    }
+    border-radius: 3.5rem;
 }
 
-.home-content p{
+.home-content p {
     font-size: 1.6rem;
 }
 
@@ -121,63 +128,76 @@ span{
     margin: 3rem;
     transition: .5s ease;
 }
-.social-media a:hover{
+
+.social-media a:hover {
     background: var(--main-color);
     color: var(--snd-bf-color);
     box-shadow: 0 0 1rem var(--main-color);
 }
 
-.btn{
+.resume-contant {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+}
+
+.btn {
     display: inline-block;
-    padding:1rem 2.8rem;
+    padding: 1rem 2.8rem;
     background: var(--main-color);
     border-radius: 4rem;
     box-shadow: 0 0 1rem var(--main-color);
     font-size: 1.6rem;
     color: var(--bg-color);
     letter-spacing: .1rem;
-    font-weight:600;
+    font-weight: 600;
     transition: .5s ease;
+}
 
+.btn:hover {
+    box-shadow: none;
 }
-.btn:hover{
- box-shadow:none;
-}
-.about{
+
+.about {
     gap: 2rem;
     background: var(--snd-bf-color);
 }
-.about-img img{
+
+.about-img img {
     width: 25vw;
-    height:30vw;
+    height: 30vw;
 }
-.heading{
-    text-align:center;
+
+.heading {
+    text-align: center;
     font-size: 4.5rem;
 }
 
-.about-heading h2{
+.about-heading h2 {
     text-align: left;
-    line-height:1.2;
+    line-height: 1.2;
     color: var(--main-color);
 }
 
-.about-content ul{
+.about-content ul {
     font-size: 1.3rem;
     margin: 0.6rem 0 0.7rem;
 }
 
-.services h2{
+.services h2 {
     margin-bottom: 5rem;
 }
-.services-container{
+
+.services-container {
     display: flex;
-    justify-content:center;
-    align-items:center;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     gap: 2rem;
 }
-.services-container .services-box{
+
+.services-container .services-box {
     flex: 1 1 30rem;
     background: var(--snd-bf-color);
     padding: 3rem 2rem 4rem;
@@ -187,16 +207,17 @@ span{
     transition: .5s ease;
 }
 
- .services-container .services-box:hover{
-     border-color: var(--main-color);
-     transform: scale(1.02);
- }
+.services-container .services-box:hover {
+    border-color: var(--main-color);
+    transform: scale(1.02);
+}
 
- .services-box i {
-     font-size: 7rem;
-     color: var(--main-color);
- }
-.services-box h3{
+.services-box i {
+    font-size: 7rem;
+    color: var(--main-color);
+}
+
+.services-box h3 {
     font-size: 1.8rem;
     color: var(--main-color);
 }
@@ -205,34 +226,132 @@ span{
     font-size: 1.2rem;
     margin: 1rem 0 3rem;
 }
-.portfolio {
-background: var(--snd-bf-color)
+
+.bg-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
 }
-.portfolio h2{
+
+.bg-img:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom right, #002f4b, #dc4225);
+    opacity: .6;
+}
+
+.portfolio {
+    background: var(--snd-bf-color);
+}
+
+.portfolio h2 {
     margin-bottom: 4rem;
 }
+
 .portfolio-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     gap: 2.5rem;
 }
-.portfolio-container .portfolio-box{
+
+.portfolio-container .portfolio-box {
     align-items: center;
     position: relative;
-    border-radius: 5 rem;
+    border-radius: 5rem;
     box-shadow: 0 0 1rem var(--main-color);
     overflow: hidden;
     display: flex;
 }
+
 .portfolio-container .portfolio-box:hover {
     border-color: var(--main-color);
     transform: scale(1.02);
 }
 
-.portfolio-layer h4{
+.portfolio-layer h4 {
     color: var(--main-color);
     margin-left: 2rem;
     margin-top: 2rem;
-   
+}
+
+/* Responsive Design */
+
+/* Extra small screens (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    .home-content h3 {
+        font-size: 1.8rem;
+        /* Even smaller font size */
+    }
+
+    .home-content h1 {
+        font-size: 3.2rem;
+        /* Even smaller font size */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .home-content h3 {
+            font-size: 2.4rem;
+            /* Smaller font size */
+        }
+    
+        .home-content h1 {
+            font-size: 4.2rem;
+            /* Smaller font size */
+        }
+    .home {
+            flex-direction: column-reverse;
+            text-align: center;
+        }
+    
+        .home-content {
+            max-width: 100%;
+        }
+    
+        .home-img img {
+            margin-bottom: 20px;
+            width: 50vw;
+        }
+    .navbar {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        /* Initially hidden */
+        height: 100vh;
+        width: 250px;
+        background: rgba(2, 5, 19, 0.8);
+        /* Darker semi-transparent background */
+        backdrop-filter: blur(15px);
+        /* Stronger blur effect */
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 2rem;
+        z-index: 200;
+        transition: right 0.3s ease;
+        /* Smooth slide-in transition */
+    }
+
+    .navbar a {
+        margin: 1rem 0;
+        font-size: 2rem;
+    }
+
+    #menu-icon {
+        display: block;
+        /* Show menu icon */
+        font-size: 3.6rem;
+        cursor: pointer;
+    }
+
+    .navbar.active {
+        right: 0;
+        /* Show sidebar */
+    }
 }
