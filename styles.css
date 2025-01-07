@@ -215,6 +215,11 @@ background: rgba(2, 5, 19, 0.3);
     color: var(--main-color);
     text-decoration: none;
 }
+.about-card h6 a {
+    font-size: 1.4rem;
+    color: var(--main-color);
+    text-decoration: none;
+}
 
 .about-card span {
     font-size: 1.2rem;
