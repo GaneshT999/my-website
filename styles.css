@@ -528,7 +528,6 @@ background: rgba(2, 5, 19, 0.3);
 .project-overlay {
     position: absolute;
     inset: 0;
-    padding: 2rem;
     background-color: rgba(2, 5, 19, 0.92);
     opacity: 0;
     transform: translateY(20px);
