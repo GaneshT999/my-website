@@ -455,3 +455,118 @@ background: rgba(2, 5, 19, 0.3);
         /* Show sidebar */
     }
 }
+
+/* Force all project cards to the same fixed size */
+.services-box.project-card {
+    position: relative;
+    width: 100%;
+    max-width: 360px;   /* Set max width for all cards */
+    height: 250px;       /* Fixed height for all cards */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 2rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    color: white;
+    transition: transform 0.3s ease;
+    flex: 1 1 360px; /* Ensures responsive grid sizing */
+    margin: 1rem;
+}
+
+
+/* Card Front (shown by default) */
+.card-front {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    transition: opacity 0.3s ease;
+}
+
+.card-front h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.8rem;
+    color: white;
+}
+
+
+
+/* Arrow Animation */
+.hover-hint {
+    font-size: 2rem;
+    color: #ffffffcc;
+    animation: bounceFade 2s ease-in-out infinite;
+    pointer-events: none;
+    display: inline-block;
+}
+
+@keyframes bounceFade {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.9;
+    }
+    50% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+}
+
+/* Hide front content + hint on hover/tap */
+.project-card:hover .card-front,
+.project-card:hover .hover-hint,
+.project-card.hovered .card-front,
+.project-card.hovered .hover-hint {
+    opacity: 0;
+    animation: none;
+}
+
+/* Overlay that appears on hover */
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    padding: 2rem;
+    background-color: rgba(2, 5, 19, 0.92);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow-y: auto;
+    border-radius: 2rem;
+    flex-direction: column;
+    z-index: 2;
+}
+
+/* Show overlay on hover/tap */
+.project-card:hover .project-overlay,
+.project-card.hovered .project-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Inside overlay */
+.project-details {
+    max-width: 90%;
+}
+
+.project-details h3 {
+    font-size: 2rem;
+    color: var(--main-color);
+    margin-bottom: 1.2rem;
+}
+
+.project-details p {
+    font-size: 1.4rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.project-details .btn {
+    margin-top: 1rem;
+}
