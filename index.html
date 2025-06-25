@@ -8,6 +8,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Oswald:wght@400;500;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body class="bg-img">
@@ -15,92 +18,108 @@
         <a href="#" class="logo">GT</a>
         <i class="fa-solid fa-bars" id="menu-icon"></i>
         <nav class="navbar" id="sidebar">
+            <button class="close-btn" id="close-menu-btn"><i class="fa-solid fa-xmark"></i></button>
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#services">Projects</a>
             <a href="#portfolio">Skills</a>
-
         </nav>
     </header>
+
     <section class="home" id="home">
         <div class="home-content">
             <h3>Hi, Myself</h3>
             <h1>Ganesh Talluri</h1>
             <h3> I'm a <span class="multiple-text"></span></h3>
             <p>
-                Currently seeking opportunities as a Software Engineer with a focus on full-stack development and cloud technologies. Holds a Master’s degree 
+                Currently seeking opportunities as a Software Engineer with a focus on full-stack development and cloud
+                technologies. Holds a Master’s degree
                 in Computer Systems Analysis from the University of South Florida and over two
-                years of experience at Deloitte, where I worked on web applications in the healthcare and insurance domains. Skilled in
-                Angular, React, Spring Boot, Java, MySQL, AWS, and Kubernetes, along with hands-on work in CI/CD pipelines, containerization, and analytics-driven solutions.
-
+                years of experience at Deloitte, where I worked on web applications in the healthcare and insurance
+                domains. Skilled in
+                Angular, React, Spring Boot, Java, MySQL, AWS, and Kubernetes, along with hands-on work in CI/CD
+                pipelines, containerization, and analytics-driven solutions.
             </p>
             <div class="social-media">
-                <a href="https://www.linkedin.com/in/ganesh-talluri-513250151/"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://github.com/GaneshT999?tab=repositories"><i class="fa-brands fa-github"></i></a>
-                <a href="https://leetcode.com/u/talluri_99/"><i class="fa-solid fa-laptop-code"></i></a>
+                <a href="https://www.linkedin.com/in/ganesh-talluri-513250151/" target="_blank"
+                    rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/GaneshT999?tab=repositories" target="_blank" rel="noopener noreferrer"><i
+                        class="fa-brands fa-github"></i></a>
+                <a href="https://leetcode.com/u/talluri_99/" target="_blank" rel="noopener noreferrer"><i
+                        class="fa-solid fa-laptop-code"></i></a>
             </div>
             <div class="resume-contant">
-                <a href="./Ganesh_Talluri_Resume.pdf" class="btn" download>Resume <i class="fa-solid fa-download"></i></a>
+                <a href="./Ganesh_Talluri_Resume.pdf" class="btn" download>Resume <i
+                        class="fa-solid fa-download"></i></a>
                 <a href="mailto:ganeshtalluri@usf.edu" class="btn">Contact <i class="fa-solid fa-envelope"></i></a>
             </div>
-            
         </div>
         <div class="home-img">
-            <img src="Images/portfolio.jpg" alt="">
+            <img src="Images/portfolio.jpg" alt="Ganesh Talluri's professional portrait">
         </div>
     </section>
+
     <section class="about" id="about">
         <h2 class="heading">About <span>Me</span></h2>
-    
         <div class="about-content">
             <div class="about-card">
                 <div class="about-heading">
                     <h2>Work Experience</h2>
                 </div>
                 <div>
-                    <h3><a href="https://www2.deloitte.com/us/en.html">Deloitte USI <i class="fa-solid fa-arrow-up-right-from-square"></i></a> , Business Technology Analyst.</h3>
+                    <h3><a href="https://www2.deloitte.com/us/en.html" target="_blank"
+                            rel="noopener noreferrer">Deloitte USI <i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></a> , Technology Analyst.
+                    </h3>
                     <span>July 2021 – July 2023</span>
                 </div>
                 <div class="work">
-                    <ul><li>Modernized a legacy insurance claims platform for a healthcare provider by developing a dynamic single-page
-                    application using Angular 10. Designed reusable components, integrated frontend with RESTful APIs, and implemented
-                    custom filters, Material UI, reactive forms, and mixins, reducing claims processing time by ~4 hours daily and enhancing
-                    the user experience. Independently handled 35-40% of frontend development.</li></ul>
-                    <ul><li>
-                        Developed 25% of the backend using Spring Boot, creating APIs and business logic for efficient frontend-database
-                        communication. Wrote 40+ JUnit tests, achieving 85% code coverage, and improved database response times by ~20%
-                        with native queries. Collaborated with DevOps teams on CI/CD pipelines, contributing 300+ Git changes, ensuring high
-                        code quality, and supporting seamless production rollouts.
-                    </li></ul>
                     <ul>
-                        <li>
-                            Worked as a Cloud Engineer managing AWS infrastructure for a leading healthcare client, supporting 250+
-                            applications and 15,000+ servers. Used ServiceNow for incident management and Datadog for monitoring to
-                            resolve issues related to Lambda, S3, EC2, and resource optimization. Streamlined workflows to improve
-                            efficiency, reduce downtime, and ensure reliable, high-performing cloud operations.
-                        </li></ul>
+                        <li>Modernized a legacy claims platform using React, designing reusable UI components and integrating RESTful APIs
+                            to reduce processing time by ~4 hours daily and significantly enhance user experience.</li>
+                        <li>Developed and optimized backend services with Spring Boot, creating robust APIs and business logic. Improved
+                            platform performance by optimizing query logic and reducing API response times, while ensuring efficient data
+                            contracts with frontend teams.</li>
+                        <li>Ensured high code quality and secure deployments through comprehensive JUnit (Spring Boot backend) and
+                            Cypress/Jest (React frontend) testing, achieving over 85% test coverage, and actively contributing to CI/CD
+                            pipelines via Jenkins and Docker.</li>
+                        <li>Managed AWS infrastructure (Lambda, S3, EC2) for 250+ applications, utilizing ServiceNow and Datadog to improve
+                            efficiency and reduce downtime for critical cloud operations.</li>
+                        <li>Contributed to Agile sprints, including planning, backlog grooming, and client demos, ensuring iterative value
+                            delivery every two weeks.</li>           </ul>
                 </div>
             </div>
-    
             <div class="about-card">
                 <div class="about-heading">
                     <h2>Education</h2>
                 </div>
                 <div class="sub-about">
-                <div>
-                    <h3><a href="https://my.usf.edu/myusf/home_myusf/index">University of South Florida <i class="fa-solid fa-arrow-up-right-from-square"></i></a>, Tampa.</h3>
-                    <span>Aug 2023 – May 2025</span>
-                    <div><h6><a href="https://www.usf.edu/business/">Muma college of Business</a></h6></div>
-                    <div class="work"><ul>
-                        <li>Master of Science, Computer Systems Analysis</li>
-                    </ul>
+                    <div>
+                        <h3><a href="https://my.usf.edu/myusf/home_myusf/index" target="_blank"
+                                rel="noopener noreferrer">University of South Florida <i
+                                    class="fa-solid fa-arrow-up-right-from-square"></i></a>, Tampa.</h3>
+                        <span>Aug 2023 – May 2025</span>
+                        <div>
+                            <h6><a href="https://www.usf.edu/business/" target="_blank" rel="noopener noreferrer">Muma
+                                    college of Business</a></h6>
+                        </div>
+                        <div class="work">
+                            <ul>
+                                <li>Master of Science, Computer Systems Analysis</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div >
-                    <h3><a href="https://www.nitw.ac.in/">National Institute of Technology Warangal <i class="fa-solid fa-arrow-up-right-from-square"></i></a>, India.</h3>
-                    <span>July 2017 – May 2021</span>
-                    <div class="work"><ul><li>Bachelor of Technology</li></ul></div>
-                </div>
+                    <div>
+                        <h3><a href="https://www.nitw.ac.in/" target="_blank" rel="noopener noreferrer">National
+                                Institute of Technology Warangal <i
+                                    class="fa-solid fa-arrow-up-right-from-square"></i></a>, India.</h3>
+                        <span>July 2017 – May 2021</span>
+                        <div class="work">
+                            <ul>
+                                <li>Bachelor of Technology</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -109,29 +128,25 @@
     <section class="services" id="services">
         <h2 class="heading">My <span>Projects</span></h2>
         <div class="services-container">
-    
-            <!-- Project 1: Student Housing -->
             <div class="services-box project-card" style="background-image: url('./Images/housing.png');">
                 <div class="card-front">
-                    
                     <span class="hover-hint"><i class="fa-solid fa-arrow-up"></i></span>
                 </div>
                 <div class="project-overlay">
                     <div class="project-details">
                         <h3>Student's Housing</h3>
                         <p>
-                            Developed a static site for USF students to find apartments. Integrated price comparison with
+                            Developed a static site for USF students to find apartments. Integrated price comparison
+                            with
                             Chart.js, map view, and CRUD features. Hosted on Azure and USF server.
                         </p>
-                        <a href="http://myweb.usf.edu/~ganeshtalluri/index.html" class="btn">Website</a>
+                        <a href="http://myweb.usf.edu/~ganeshtalluri/index.html" class="btn" target="_blank"
+                            rel="noopener noreferrer">Website</a>
                     </div>
                 </div>
             </div>
-    
-            <!-- Project 2: Roster App -->
             <div class="services-box project-card" style="background-image: url('./Images/Roster.png');">
                 <div class="card-front">
-                   
                     <span class="hover-hint"><i class="fa-solid fa-arrow-up"></i></span>
                 </div>
                 <div class="project-overlay">
@@ -142,15 +157,12 @@
                             Admins manage employees, projects, roles, and validations.
                         </p>
                         <a href="https://github.com/GaneshT999/Frontend-Projects/tree/main/Shift_Roster-ganesh_module"
-                            class="btn">Source Code</a>
+                            class="btn" target="_blank" rel="noopener noreferrer">Source Code</a>
                     </div>
                 </div>
             </div>
-    
-            <!-- Project 3: Tableau Dashboard -->
             <div class="services-box project-card" style="background-image: url('./Images/tampa.png');">
                 <div class="card-front">
-                    
                     <span class="hover-hint"><i class="fa-solid fa-arrow-up"></i></span>
                 </div>
                 <div class="project-overlay">
@@ -161,12 +173,10 @@
                             Used Python for data prep and Tableau for interactive visuals.
                         </p>
                         <a href="https://public.tableau.com/app/profile/ganesh.talluri/viz/Tampabayunemploymentdashboard/TampaBayinsightsonunemploymentrate?publish=yes"
-                            class="btn">Dashboard</a>
+                            class="btn" target="_blank" rel="noopener noreferrer">Dashboard</a>
                     </div>
                 </div>
             </div>
-    
-            <!-- Project 4: Forage Midas -->
             <div class="services-box project-card" style="background-image: url('./Images/midas.png');">
                 <div class="card-front">
                     <span class="hover-hint"><i class="fa-solid fa-arrow-up"></i></span>
@@ -175,17 +185,19 @@
                     <div class="project-details">
                         <h3>Forage Midas</h3>
                         <p>
-                            Developed backend components of a transaction processing system as part of the JPMorgan Chase Software
-                            Engineering Virtual Experience on Forage. Implemented Kafka consumers for real-time message processing, applied
-                            transactional validation, persisted data using JPA with H2, and integrated an external API. Built RESTful services for
+                            Developed backend components of a transaction processing system as part of the JPMorgan
+                            Chase Software
+                            Engineering Virtual Experience on Forage. Implemented Kafka consumers for real-time message
+                            processing, applied
+                            transactional validation, persisted data using JPA with H2, and integrated an external API.
+                            Built RESTful services for
                             balance queries. Tools: Java, Spring Boot, Apache Kafka, JPA, H2, REST API.
                         </p>
-                        <a href="https://github.com/GaneshT999/forage-midas" class="btn">Source Code</a>
+                        <a href="https://github.com/GaneshT999/forage-midas" class="btn" target="_blank"
+                            rel="noopener noreferrer">Source Code</a>
                     </div>
                 </div>
             </div>
-    
-            <!-- Project 5: Recipe App -->
             <div class="services-box project-card" style="background-image: url('./Images/recipe-app.png');">
                 <div class="card-front">
                     <span class="hover-hint"><i class="fa-solid fa-arrow-up"></i></span>
@@ -194,140 +206,90 @@
                     <div class="project-details">
                         <h3>Recipe Management App</h3>
                         <p>
-                            Built a full-stack Recipe Management app using React, Spring Boot, and MySQL, with JWT for authentication and
-                            BCrypt for password hashing. Implemented role-based authorization, allowing admins or recipe creators to edit/delete
-                            recipes. The frontend uses React and Tailwind CSS, while the backend leverages Spring Boot, Spring Security, and
+                            Built a full-stack Recipe Management app using React, Spring Boot, and MySQL, with JWT for
+                            authentication and
+                            BCrypt for password hashing. Implemented role-based authorization, allowing admins or recipe
+                            creators to edit/delete
+                            recipes. The frontend uses React and Tailwind CSS, while the backend leverages Spring Boot,
+                            Spring Security, and
                             MySQL for data management.
                         </p>
-                        <a href="https://github.com/GaneshT999/recipe-app" class="btn">Source Code</a>
+                        <a href="https://github.com/GaneshT999/recipe-app" class="btn" target="_blank"
+                            rel="noopener noreferrer">Source Code</a>
                     </div>
                 </div>
             </div>
-    
         </div>
     </section>
-
-
 
     <section class="portfolio" id="portfolio">
-    <h2 class="heading">My <span>Skills</span></h2>
-    <div class="services-container">
-        <div class="services-box">
-            <div class="portfolio-layer">
-                <h4>
-                    Programming Languages
-                </h4>
-                <ul>
-                    <li>
-                        <img src="./Images/java.svg">
-                    </li>
-                    <li>
-                        <img src="./Images/c++.svg">
-                    </li>
-                    <li>
-                        <img src="./Images/python.svg">
-                    </li>
-                    <li>
-                        <img src="./Images/javascript.svg">
-                    </li>
-                </ul>
+        <h2 class="heading">My <span>Skills</span></h2>
+        <div class="services-container">
+            <div class="services-box">
+                <div class="portfolio-layer">
+                    <h4>Programming Languages</h4>
+                    <ul>
+                        <li><img src="./Images/java.svg" alt="Java"></li>
+                        <li><img src="./Images/c++.svg" alt="C++"></li>
+                        <li><img src="./Images/python.svg" alt="Python"></li>
+                        <li><img src="./Images/javascript.svg" alt="JavaScript"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="services-box">
+                <div class="portfolio-layer">
+                    <h4>Databases</h4>
+                    <ul>
+                        <li><img src="./Images/mysql.svg" alt="MySQL"></li>
+                        <li><img src="./Images/mongodb.svg" alt="MongoDB"></li>
+                        <li><img src="./Images/postgresql.svg" alt="PostgreSQL"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="services-box">
+                <div class="portfolio-layer">
+                    <h4>Cloud Technologies</h4>
+                    <ul>
+                        <li><img src="./Images/amazon.svg" alt="Amazon Web Services (AWS)"></li>
+                        <li><img src="./Images/docker.svg" alt="Docker"></li>
+                        <li><img src="./Images/icons8-terraform.svg" alt="Terraform"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="services-box">
+                <div class="portfolio-layer">
+                    <h4>Frameworks</h4>
+                    <ul>
+                        <li><img src="./Images/angular.svg" alt="Angular"></li>
+                        <li><img src="./Images/spring.svg" alt="Spring Boot"></li>
+                        <li><img src="./Images/nodejs.svg" alt="Node.js"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="services-box">
+                <div class="portfolio-layer">
+                    <h4>Software Tools</h4>
+                    <ul>
+                        <li><img src="./Images/vscode.svg" alt="VS Code"></li>
+                        <li><img src="./Images/intellij.svg" alt="IntelliJ IDEA"></li>
+                        <li><img src="./Images/git.svg" alt="Git"></li>
+                        <li><img src="./Images/icons8-visual-studio.svg" alt="Visual Studio"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="services-box">
+                <div class="portfolio-layer">
+                    <h4>Analytical Tools</h4>
+                    <ul>
+                        <li><img src="./Images/icons8-power-bi-2021.svg" alt="Power BI"></li>
+                        <li><img src="./Images/icons8-tableau-software.svg" alt="Tableau"></li>
+                        <li><img src="./Images/icons8-project-jupyter.svg" alt="Jupyter Notebook"></li>
+                    </ul>
+                </div>
             </div>
         </div>
-        
-        <div class="services-box">
-            <div class="portfolio-layer">
-                <h4>
-                    Databases
-                </h4>
-                <ul>
-                    <li>
-                        <img src="./Images/mysql.svg">
-                    </li>
-                    <li>
-                        <img src="./Images/mongodb.svg">
-                    </li>
-                    <li>
-                        <img src="./Images/postgresql.svg">
-                    </li>
-                    
-                </ul>
-            </div>
-        </div>
-        <div class="services-box">
-            <div class="portfolio-layer">
-                <h4>
-                    Cloud Technologies
-                </h4>
-                <ul>
-                    <li>
-                        <img src="./Images/amazon.svg">
-                    </li>
-                    <li>
-                        <img src="./Images/docker.svg">
-                    </li>
-                    <li>
-                        <img src="./Images/icons8-terraform.svg">
-                    </li>
-                </ul>
-            </div>
-        </div><div class="services-box">
-            <div class="portfolio-layer">
-                <h4>
-                    Frameworks
-                </h4>
-                <ul>
-                    <li>
-                        <img src="./Images/angular.svg">
-                    </li>
-                    <li>
-                        <img src="./Images/spring.svg">
-                    </li>
-                    <li>
-                        <img src="./Images/nodejs.svg">
-                    </li>
-                </ul>
-            </div>
-        </div><div class="services-box">
-            <div class="portfolio-layer">
-                <h4>
-                    Software Tools
-                </h4>
-                <ul>
-                    <li>
-                        <img src="./Images/vscode.svg">
-                    </li>
-                    <li>
-                        <img src="./Images/intellij.svg">
-                    </li>
-                    <li>
-                        <img src="./Images/git.svg">
-                    </li>
-                    <li>
-                        <img src="./Images/icons8-visual-studio.svg">
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="services-box">
-            <div class="portfolio-layer">
-                <h4>
-                    Analytical Tools
-                </h4>
-                <ul>
-                    <li>
-                        <img src="./Images/icons8-power-bi-2021.svg">
-                    </li>
-                    <li>
-                        <img src="./Images/icons8-tableau-software.svg">
-                    </li>
-                    <li>
-                        <img src="./Images/icons8-project-jupyter.svg">
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
     </section>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
