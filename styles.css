@@ -39,7 +39,7 @@ body::-webkit-scrollbar-thumb:hover {
     background-color: rgba(255, 255, 255, 0.1); /* Even more subtle thumb for cards */
     border-radius: 10px;
     border: 1px solid transparent;
-    background-clip: padding-box;
+    background-clip: padding: box;
     transition: background-color 0.3s ease;
 }
 
@@ -144,7 +144,7 @@ section {
 }
 
 .home-content h3 {
-    font-size: 2.0rem;
+    font-size: 2.0rem; /* Adjusted for smaller desktop size */
     font-weight: 600;
     font-family: 'Oswald', sans-serif; /* Bold, condensed font for headings */
     letter-spacing: 0.1em;
@@ -159,7 +159,7 @@ span {
 }
 
 .home-content h1 {
-    font-size: 4.5rem; /* Large, impactful name */
+    font-size: 4.5rem; /* Adjusted for smaller desktop name */
     font-weight: 700;
     line-height: 1.1; /* Tighter line height for large text */
     font-family: 'Oswald', sans-serif;
@@ -185,7 +185,7 @@ span {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 4rem; /* Slightly larger icon containers */
+    width: 4rem; /* Slightly smaller icon containers for current desktop sizes */
     height: 4rem;
     background: transparent;
     border: .2rem solid var(--main-color); /* Red border */
@@ -585,23 +585,29 @@ span {
 /* Responsive Design */
 
 /* Sidebar Overlay for Mobile Menu */
+/* IMPORTANT: Changed from being created by JS to directly in HTML, positioned within header */
 .sidebar-overlay {
-    position: fixed;
+    position: fixed; /* Keep fixed to cover the whole viewport */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0); /* Start fully transparent */
-    z-index: 150; /* Between content and sidebar */
-    visibility: hidden; /* Hidden by default */
-    opacity: 0;
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth fade in/out */
+    z-index: 150; /* Lower than active navbar (200), higher than content */
+    opacity: 0; /* Important for visual fade */
+    transition: opacity 0.3s ease; /* Only transition opacity */
+    
+    /* CRITICAL CHANGE: Use display: none when inactive */
+    display: none; 
+    /* pointer-events handled by JS for more precise control */
 }
 
 .sidebar-overlay.active {
     background-color: rgba(0, 0, 0, 0.7); /* Darker overlay when active */
-    visibility: visible;
-    opacity: 1;
+    opacity: 1; /* Make it opaque */
+    /* CRITICAL CHANGE: Use display: block when active */
+    display: block; 
+    /* pointer-events handled by JS for more precise control */
 }
 
 /* Mobile Close Button Styling */
@@ -690,17 +696,40 @@ span {
         background: rgba(25, 25, 25, 0.85); /* Slightly brighter background for mobile */
         backdrop-filter: blur(25px); /* Stronger blur effect */
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start; /* Align links to the top */
         align-items: flex-start; /* Align links to the left */
         padding: 2rem;
-        z-index: 200;
+        padding-top: 8rem; /* Extra padding at the top to clear the close button */
+        z-index: 200; /* Higher than overlay */
         transition: right 0.3s ease; /* Smooth slide-in transition */
         box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5); /* Shadow for slide-out effect */
+        /* pointer-events handled by JS for precise control */
+        pointer-events: none; /* Default to none when inactive */
+    }
+    .navbar.active {
+        right: 0; /* Slide sidebar into view */
+        pointer-events: auto; /* Make the navbar clickable when active */
     }
 
+
+    /* IMPORTANT: Ensure individual links are clickable and spaced correctly */
     .navbar a {
-        margin: 1.5rem 0;
-        font-size: 2.2rem; /* Larger for mobile tap targets */
+        margin: 0.8rem 0; /* Slightly reduced margin as padding will add more space */
+        padding: 1rem 2rem; /* Add generous padding around each link for better touch targets and spacing */
+        line-height: 1.2; /* Ensure a comfortable line height, especially if text wraps */
+        width: 100%; /* Make links full width for consistent touch area */
+        text-align: left; /* Align text to the left */
+        transition: background-color 0.3s ease, color 0.3s ease; /* Add transition for hover/active */
+        /* pointer-events handled by JS for precise control */
+        pointer-events: auto; /* Ensure individual links are clickable */
+        position: relative; /* Needed for z-index to work */
+        z-index: 201; /* Ensure links are above anything else */
+    }
+
+    .navbar a:hover,
+    .navbar a.active {
+        background-color: rgba(204, 0, 0, 0.2); /* Subtle red highlight on hover/active */
+        color: var(--main-color); /* Ensure text color is red */
     }
 
     #menu-icon {
@@ -710,10 +739,6 @@ span {
     }
     .close-btn {
         display: block; /* Show close button on mobile */
-    }
-
-    .navbar.active {
-        right: 0; /* Slide sidebar into view */
     }
 
     .social-media a {

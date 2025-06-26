@@ -1,9 +1,7 @@
 // Typed.js for dynamic text
-// Updated strings to reflect your cloud/AI interest,
-// and removed the pipe for smoother transitions
 const typed = new Typed('.multiple-text', {
     strings: [
-        'Full Stack Engineer' , 'AI | Cloud Enthusiast',
+        'Full Stack Engineer', 'AI | Cloud Enthusiast',
         'Frontend Developer'
     ],
     typeSpeed: 60,
@@ -38,29 +36,47 @@ ScrollReveal().reveal('.portfolio-layer img', { interval: 50, origin: 'bottom' }
 // Mobile Navigation Toggle
 const menuIcon = document.getElementById('menu-icon');
 const navbar = document.getElementById('sidebar');
-const closeMenuBtn = document.getElementById('close-menu-btn'); // Get the new close button
-const sidebarOverlay = document.createElement('div'); // Create the overlay element
+const closeMenuBtn = document.getElementById('close-menu-btn');
 
-sidebarOverlay.classList.add('sidebar-overlay'); // Add class for styling
-document.body.appendChild(sidebarOverlay); // Append to body
+// CRITICAL CHANGE: Get existing overlay from HTML, no longer create it
+const sidebarOverlay = document.getElementById('sidebar-overlay-html'); 
 
-// Open menu logic
-menuIcon.addEventListener('click', () => {
-    navbar.classList.add('active'); // Use add for opening
+// Set initial pointer-events state immediately after element selection
+// This is crucial for load-time and ensuring no clicks are registered prematurely
+sidebarOverlay.style.pointerEvents = 'none'; 
+navbar.style.pointerEvents = 'none'; 
+
+
+// Function to open the mobile menu
+function openMobileMenu() {
+    navbar.classList.add('active'); // Add active class to show navbar
     sidebarOverlay.classList.add('active'); // Show overlay
-});
-
-// Close menu function (reusable)
-function closeMobileMenu() {
-    navbar.classList.remove('active');
-    sidebarOverlay.classList.remove('active');
+    
+    // Explicitly set pointer-events to 'auto' when opening
+    // This allows clicks on the overlay (to close) and on the navbar links
+    sidebarOverlay.style.pointerEvents = 'auto'; 
+    navbar.style.pointerEvents = 'auto'; 
 }
 
-// Close menu logic for close button
-closeMenuBtn.addEventListener('click', closeMobileMenu);
+// Function to close the mobile menu
+function closeMobileMenu() {
+    navbar.classList.remove('active'); // Remove active class to hide navbar
+    sidebarOverlay.classList.remove('active'); // Hide overlay
 
-// Close menu logic when clicking the overlay
-sidebarOverlay.addEventListener('click', closeMobileMenu);
+    // IMPORTANT: Delay setting pointer-events to 'none'
+    // This allows the CSS transition (opacity fade) to complete visually BEFORE clicks are disabled.
+    // The delay should match your CSS transition duration for .sidebar-overlay (0.3s).
+    setTimeout(() => {
+        sidebarOverlay.style.pointerEvents = 'none'; // Disable clicks on overlay
+        navbar.style.pointerEvents = 'none'; // Disable clicks on navbar when hidden
+    }, 300); 
+}
+
+// Event Listeners
+menuIcon.addEventListener('click', openMobileMenu); // Open menu
+closeMenuBtn.addEventListener('click', closeMobileMenu); // Close menu with button
+sidebarOverlay.addEventListener('click', closeMobileMenu); // Close menu by clicking overlay
+
 
 // Close the sidebar when a navigation link is clicked AND scroll smoothly
 const navbarLinks = document.querySelectorAll('.navbar a');
