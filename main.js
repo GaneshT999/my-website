@@ -37,45 +37,59 @@ ScrollReveal().reveal('.portfolio-layer img', { interval: 50, origin: 'bottom' }
 const menuIcon = document.getElementById('menu-icon');
 const navbar = document.getElementById('sidebar');
 const closeMenuBtn = document.getElementById('close-menu-btn');
+const sidebarOverlay = document.getElementById('sidebar-overlay-html'); // Get existing overlay from HTML
 
-// CRITICAL CHANGE: Get existing overlay from HTML, no longer create it
-const sidebarOverlay = document.getElementById('sidebar-overlay-html'); 
+// CRITICAL CHANGE: Media query listener to control pointer-events based on screen size
+const mobileMediaQuery = window.matchMedia('(max-width: 768px)'); // Matches your CSS breakpoint
 
-// Set initial pointer-events state immediately after element selection
-// This is crucial for load-time and ensuring no clicks are registered prematurely
-sidebarOverlay.style.pointerEvents = 'none'; 
-navbar.style.pointerEvents = 'none'; 
+function handleMobileNavPointerEvents(mediaQuery) {
+    if (mediaQuery.matches) {
+        // On mobile: Default overlay/navbar to none, will be 'auto' when 'active' class is added
+        sidebarOverlay.style.pointerEvents = 'none';
+        navbar.style.pointerEvents = 'none'; // Controlled by JS for mobile active state
+    } else {
+        // On desktop: Always auto.
+        sidebarOverlay.style.pointerEvents = 'none'; // Overlay should always be non-clickable on desktop
+        navbar.style.pointerEvents = 'auto'; // Navbar is always clickable on desktop (handled by CSS, but good to ensure)
 
+        // Ensure mobile menu is fully closed if resizing from mobile to desktop
+        navbar.classList.remove('active');
+        sidebarOverlay.classList.remove('active');
+    }
+}
 
-// Function to open the mobile menu
+// Attach listener and run once on load
+mobileMediaQuery.addEventListener('change', handleMobileNavPointerEvents);
+handleMobileNavPointerEvents(mobileMediaQuery); // Run once on initial load
+
+// Function to open the mobile menu (only effective on mobile due to CSS/JS combined logic)
 function openMobileMenu() {
-    navbar.classList.add('active'); // Add active class to show navbar
-    sidebarOverlay.classList.add('active'); // Show overlay
-    
-    // Explicitly set pointer-events to 'auto' when opening
-    // This allows clicks on the overlay (to close) and on the navbar links
-    sidebarOverlay.style.pointerEvents = 'auto'; 
-    navbar.style.pointerEvents = 'auto'; 
+    if (mobileMediaQuery.matches) { // Only allow opening on mobile screens
+        navbar.classList.add('active');
+        sidebarOverlay.classList.add('active');
+        sidebarOverlay.style.pointerEvents = 'auto'; // Overlay itself is clickable to close
+        navbar.style.pointerEvents = 'auto'; // Navbar links are clickable
+    }
 }
 
-// Function to close the mobile menu
+// Function to close the mobile menu (reusable)
 function closeMobileMenu() {
-    navbar.classList.remove('active'); // Remove active class to hide navbar
-    sidebarOverlay.classList.remove('active'); // Hide overlay
-
-    // IMPORTANT: Delay setting pointer-events to 'none'
-    // This allows the CSS transition (opacity fade) to complete visually BEFORE clicks are disabled.
-    // The delay should match your CSS transition duration for .sidebar-overlay (0.3s).
+    navbar.classList.remove('active');
+    sidebarOverlay.classList.remove('active');
+    
+    // Delay setting pointer-events to 'none' to allow CSS transition to complete
     setTimeout(() => {
-        sidebarOverlay.style.pointerEvents = 'none'; // Disable clicks on overlay
-        navbar.style.pointerEvents = 'none'; // Disable clicks on navbar when hidden
-    }, 300); 
+        if (mobileMediaQuery.matches) { // Only apply 'none' if still on mobile
+            sidebarOverlay.style.pointerEvents = 'none';
+            navbar.style.pointerEvents = 'none';
+        }
+    }, 300); // Matches CSS transition duration (0.3s)
 }
 
-// Event Listeners
-menuIcon.addEventListener('click', openMobileMenu); // Open menu
-closeMenuBtn.addEventListener('click', closeMobileMenu); // Close menu with button
-sidebarOverlay.addEventListener('click', closeMobileMenu); // Close menu by clicking overlay
+// Event Listeners for menu toggle
+menuIcon.addEventListener('click', openMobileMenu);
+closeMenuBtn.addEventListener('click', closeMobileMenu);
+sidebarOverlay.addEventListener('click', closeMobileMenu);
 
 
 // Close the sidebar when a navigation link is clicked AND scroll smoothly
@@ -83,26 +97,28 @@ const navbarLinks = document.querySelectorAll('.navbar a');
 navbarLinks.forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault(); // Prevent default jump
-        const targetId = this.getAttribute('href').substring(1); // Get ID without '#'
+        const targetId = this.getAttribute('href').substring(1);
         const targetSection = document.getElementById(targetId);
 
         if (targetSection) {
-            // Scroll to the section, adjusting for the fixed header
             const headerHeight = document.querySelector('.header').offsetHeight;
             window.scrollTo({
-                top: targetSection.offsetTop - headerHeight - 20, // Header height + small offset
+                top: targetSection.offsetTop - headerHeight - 20,
                 behavior: 'smooth'
             });
         }
         
-        closeMobileMenu(); // Close the menu after clicking a link
+        // Only close if on a mobile screen
+        if (mobileMediaQuery.matches) {
+            closeMobileMenu(); 
+        }
     });
 });
 
 
 // Active Navigation Link Highlighting on Scroll
 document.addEventListener("DOMContentLoaded", function() {
-    const navLinks = document.querySelectorAll("#sidebar a"); // Select all links in the sidebar
+    const navLinks = document.querySelectorAll("#sidebar a");
 
     function removeActiveClasses() {
         navLinks.forEach(link => link.classList.remove("active"));
@@ -111,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function addActiveClass(id) {
         removeActiveClasses();
         const targetLink = document.querySelector(`#sidebar a[href="#${id}"]`);
-        if (targetLink) { // Check if the link exists
+        if (targetLink) {
             targetLink.classList.add("active");
         }
     }
@@ -121,7 +137,6 @@ document.addEventListener("DOMContentLoaded", function() {
         let scrollPos = window.scrollY || document.documentElement.scrollTop;
 
         sections.forEach(section => {
-            // Adjust the offset based on your fixed header height + some buffer
             const offset = document.querySelector('.header').offsetHeight + 50; 
             if (scrollPos >= section.offsetTop - offset && scrollPos < section.offsetTop + section.offsetHeight - offset) {
                 const sectionId = section.getAttribute("id");
@@ -131,7 +146,5 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     window.addEventListener("scroll", handleScroll);
-
-    // Initial check on load to set the active link for the first visible section
-    handleScroll();
+    handleScroll(); // Initial check on load
 });

@@ -39,7 +39,7 @@ body::-webkit-scrollbar-thumb:hover {
     background-color: rgba(255, 255, 255, 0.1); /* Even more subtle thumb for cards */
     border-radius: 10px;
     border: 1px solid transparent;
-    background-clip: padding: box;
+    background-clip: padding-box;
     transition: background-color 0.3s ease;
 }
 
@@ -599,7 +599,7 @@ span {
     
     /* CRITICAL CHANGE: Use display: none when inactive */
     display: none; 
-    /* pointer-events handled by JS for more precise control */
+    /* pointer-events handled by JS for more precise control (not by CSS for active/inactive state) */
 }
 
 .sidebar-overlay.active {
@@ -703,12 +703,13 @@ span {
         z-index: 200; /* Higher than overlay */
         transition: right 0.3s ease; /* Smooth slide-in transition */
         box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5); /* Shadow for slide-out effect */
-        /* pointer-events handled by JS for precise control */
-        pointer-events: none; /* Default to none when inactive */
+        /* pointer-events handled by JS for precise control (default to none) */
+        pointer-events: none; 
     }
     .navbar.active {
         right: 0; /* Slide sidebar into view */
-        pointer-events: auto; /* Make the navbar clickable when active */
+        /* pointer-events handled by JS for precise control (set to auto when active) */
+        pointer-events: auto; 
     }
 
 
