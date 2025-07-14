@@ -1,4 +1,53 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+/* Font Imports:
+   It's crucial to link these in your HTML <head> section for optimal performance.
+   Example:
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+*/
+
+/* --- Custom Scrollbar Styles for Webkit Browsers (Chrome, Safari, Edge) --- */
+/* For the entire page scrollbar */
+body::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+    background: transparent; /* Make the track transparent */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.15); /* Very subtle, light grey thumb */
+    border-radius: 10px; /* Rounded corners for the thumb */
+    border: 2px solid transparent; /* Transparent border to make it appear thinner */
+    background-clip: padding-box; /* Ensures the border is around the thumb, not within */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(204, 0, 0, 0.5); /* Ferrari Red on hover */
+}
+
+/* For the project cards' internal scrollbar */
+.project-overlay::-webkit-scrollbar {
+    width: 6px; /* Slightly thinner scrollbar for internal elements */
+}
+
+.project-overlay::-webkit-scrollbar-track {
+    background: transparent; /* Transparent track */
+}
+
+.project-overlay::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.1); /* Even more subtle thumb for cards */
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    transition: background-color 0.3s ease;
+}
+
+.project-overlay::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(204, 0, 0, 0.6); /* Ferrari Red on hover for cards */
+}
+/* --- End Custom Scrollbar Styles --- */
+
 
 * {
     margin: 0;
@@ -8,18 +57,21 @@
     border: none;
     outline: none;
     scroll-behavior: smooth;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Montserrat', sans-serif; /* Primary font for general text */
 }
 
+/* Root Variables: Define your custom color palette */
 :root {
-    --bg-color: #020513;
-    --snd-bf-color: #0e3a3d;
-    --text-color: #fff;
-    --main-color: #21847d;
+    --bg-color: #0d0d0d; /* Very dark charcoal/black */
+    --snd-bf-color: #1a1a1a; /* Slightly lighter dark for secondary backgrounds/cards */
+    --text-color: #f0f0f0; /* Soft white for primary text */
+    --light-text-color: #b0b0b0; /* Lighter grey for subtle text */
+    --main-color: #cc0000; /* Classic Ferrari Red */
+    --accent-gold: #c0a060; /* Optional: A subtle gold for special highlights */
 }
 
 html {
-    font-size: 62.5%;
+    font-size: 62.5%; /* Base font size: 1rem = 10px */
     overflow-x: hidden;
 }
 
@@ -28,67 +80,74 @@ body {
     color: var(--text-color);
 }
 
+/* Full-height sections with consistent padding */
 section {
     min-height: 100vh;
     padding: 10rem 9% 2rem;
 }
 
+/* Header: Fixed, sleek, and slightly transparent */
 .header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 2rem 9%;
-    background: rgba(2, 5, 19, 0.3);
-    backdrop-filter: blur(30px);
+    padding: 2.5rem 9%; /* More vertical padding for premium feel */
+    background: rgba(0, 0, 0, 0.6); /* Deeper, more opaque dark */
+    backdrop-filter: blur(15px); /* Stronger blur for glass effect */
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* Optional: Add a subtle shadow for better readability */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Pronounced, luxurious shadow */
 }
 
 .logo {
-    font-size: 2.5rem;
-    color: var(--main-color);
-    font-weight: 700;
+    font-size: 3rem; /* Larger, impactful logo */
+    color: var(--text-color); /* Logo color is white for boldness */
+    font-weight: 800; /* Extra bold for prominence */
     cursor: default;
     text-decoration: none;
-}
-#menu-icon {
-    display: none;
+    text-transform: uppercase;
+    letter-spacing: 0.15em; /* Subtle letter spacing for a refined look */
 }
 
+/* Mobile menu icon (hidden on desktop) */
+#menu-icon {
+    display: none; /* Hidden by default, shown in media query */
+}
+
+/* Navbar links: Spaced out, elegant hover effect */
 .navbar a {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: var(--text-color);
-    margin-left: 4rem;
-    font-weight: 700;
+    margin-left: 5rem; /* More spacing between links */
+    font-weight: 600;
     text-decoration: none;
+    transition: color 0.3s ease, border-bottom 0.3s ease, padding-bottom 0.3s ease; /* Smooth hover transition */
 }
 
 .navbar a:hover,
 .navbar a.active {
-    color: var(--main-color);
+    color: var(--main-color); /* Red on hover/active */
+    border-bottom: 2px solid var(--main-color); /* Subtle red underline */
+    padding-bottom: 0.3rem; /* Space for the underline */
 }
 
-#menu-icon {
-    font-size: 3.6rem;
-    color: var(--text-color);
-    display: none;
-}
-
+/* Home Section: Immersive hero area */
 .home {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    padding-top: 12rem; /* Ensure content starts below the fixed header */
 }
 
 .home-content h3 {
-    font-size: 3.2rem;
-    font-weight: 700;
+    font-size: 2.0rem; /* Adjusted for smaller desktop size */
+    font-weight: 600;
+    font-family: 'Oswald', sans-serif; /* Bold, condensed font for headings */
+    letter-spacing: 0.1em;
 }
 
 .home-content h3:nth-of-type(2) {
@@ -96,47 +155,52 @@ section {
 }
 
 span {
-    color: var(--main-color);
+    color: var(--main-color); /* Use Ferrari Red for accents */
 }
 
 .home-content h1 {
-    font-size: 5.6rem;
+    font-size: 4.5rem; /* Adjusted for smaller desktop name */
     font-weight: 700;
-    line-height: 1.3;
-}
-.work{
-    font-size: 1.5rem;
-        font-weight: 15;
-        line-height: 1.3;
-}
-.home-img img {
-    width: 20vw;
-    border-radius: 3.5rem;
+    line-height: 1.1; /* Tighter line height for large text */
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 }
 
 .home-content p {
-    font-size: 1.6rem;
+    font-size: 1.8rem; /* Readable body text size */
+    line-height: 1.6; /* Comfortable line spacing */
+    color: var(--light-text-color); /* Softer grey for body text */
 }
 
+/* Professional image styling */
+.home-img img {
+    width: 21vw; /* Adjust image size */
+    border-radius: 1.5rem; /* Sleek, slightly rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Stronger, luxurious shadow */
+}
+
+/* Social Media Icons: Refined and interactive */
 .social-media a {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 4rem;
+    width: 4rem; /* Slightly smaller icon containers for current desktop sizes */
     height: 4rem;
     background: transparent;
-    border: .2rem solid var(--main-color);
-    border-radius: 50%;
-    font-size: 2rem;
-    color: var(--main-color);
-    margin: 3rem;
-    transition: .5s ease;
+    border: .2rem solid var(--main-color); /* Red border */
+    border-radius: 8px; /* Square with slight rounding for modern look */
+    font-size: 2.4rem; /* Larger icon size */
+    color: var(--text-color); /* White icons */
+    margin: 3rem 1.5rem; /* Balanced spacing */
+    transition: all .5s ease; /* Smooth transition */
 }
 
 .social-media a:hover {
-    background: var(--main-color);
-    color: var(--snd-bf-color);
-    box-shadow: 0 0 1rem var(--main-color);
+    background: var(--main-color); /* Red background on hover */
+    color: var(--bg-color); /* Dark text on red hover */
+    box-shadow: 0 0 1.5rem var(--main-color); /* Red glow on hover */
+    transform: translateY(-5px); /* Subtle lift effect */
 }
 
 .resume-contant {
@@ -146,102 +210,142 @@ span {
     gap: 4rem;
 }
 
+/* Buttons: Premium look with subtle gradients and shadows */
 .btn {
     display: inline-block;
-    padding: 1rem 2.8rem;
-    background: var(--main-color);
-    border-radius: 4rem;
-    box-shadow: 0 0 1rem var(--main-color);
-    font-size: 1.6rem;
-    color: var(--bg-color);
-    letter-spacing: .1rem;
-    font-weight: 600;
-    transition: .5s ease;
+    padding: 1.2rem 3.5rem; /* More generous padding */
+    background: linear-gradient(45deg, var(--main-color), #ff3333); /* Subtle red gradient */
+    border-radius: 5px; /* Sharper, modern corners */
+    box-shadow: 0 0 1.5rem rgba(204, 0, 0, 0.6); /* Deep red glow */
+    font-size: 1.7rem;
+    color: var(--text-color); /* White text on buttons */
+    letter-spacing: .08rem;
+    font-weight: 700;
+    text-transform: uppercase; /* Strong, branded button text */
+    transition: all 0.4s ease; /* Smooth transition */
 }
 
 .btn:hover {
-    box-shadow: none;
+    box-shadow: 0 0 2.5rem rgba(204, 0, 0, 0.8); /* More intense glow on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    background: linear-gradient(45deg, #ff3333, var(--main-color)); /* Inverted gradient on hover */
 }
 
+/* About Section: Structured content with distinct cards */
 .about {
     gap: 2rem;
-    background: var(--snd-bf-color);
+    background: var(--snd-bf-color); /* Slightly lighter dark background */
+    padding: 12rem 9% 4rem; /* More top padding for section separation */
 }
 
-.about-img img {
-    width: 25vw;
-    height: 30vw;
-}
-
+/* Main Section Heading */
 .heading {
     text-align: center;
-    font-size: 4.5rem;
+    font-size: 5rem;
+    font-weight: 700;
+    font-family: 'Oswald', sans-serif; /* Bold, condensed for main headings */
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 5rem;
 }
 
+/* Heading within About Cards */
 .about-heading h2 {
     text-align: center;
     line-height: 1.2;
-    color: var(--main-color);
+    color: var(--main-color); /* Red accent for card headings */
+    font-size: 3rem;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.05em;
+}
+
+/* General work/list item styling */
+.work {
+    font-size: 1.6rem;
+    line-height: 1.5; /* Good line height for readability */
+    color: var(--light-text-color); /* Softer text color */
 }
 
 .about-content ul {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     margin: 0.6rem 0 0.7rem;
+    color: var(--light-text-color);
+    list-style-type: disc;
+    padding-left: 2rem;
 }
 
-
-
-.sub-about{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 2rem;
-        flex-direction: row;
+/* Sub-sections within About (e.g., Education) */
+.sub-about {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the top within sub-about */
+    flex-wrap: wrap;
+    gap: 2rem;
+    flex-direction: row;
 }
 
+/* About Card Styling: Glassmorphism effect with elegant shadows */
 .about-card {
-background: rgba(2, 5, 19, 0.3);
-    backdrop-filter: blur(30px);
-    padding: 5rem;
-    border-radius: 1.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.7); /* Deeper dark for cards */
+    backdrop-filter: blur(20px); /* Stronger blur for glass effect */
+    padding: 5.5rem; /* Generous internal padding */
+    border-radius: 1rem; /* Sleeker, less rounded corners */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* Prominent shadow */
     flex: 1 1 30rem;
     min-width: 280px;
     margin-bottom: 2rem;
-    
+    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Smooth hover transition */
+}
+
+.about-card:hover {
+    transform: translateY(-8px); /* Subtle lift on hover */
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7); /* Enhanced shadow on hover */
 }
 
 .about-card h3 a {
     font-size: 1.8rem;
     color: var(--main-color);
     text-decoration: none;
+    transition: color 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
 }
+.about-card h3 a:hover {
+    color: var(--accent-gold); /* Gold accent on hover for links */
+}
+
 .about-card h6 a {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: var(--main-color);
     text-decoration: none;
+    transition: color 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+.about-card h6 a:hover {
+    color: var(--accent-gold);
 }
 
 .about-card span {
-    font-size: 1.2rem;
-    color: var(--text-color);
+    font-size: 1.4rem; /* Date/duration text size */
+    color: var(--light-text-color);
     display: block;
     margin-top: 0.5rem;
 }
 
-.about-card ul {
-    margin-top: 1rem;
-    font-size: 1.4rem;
-    color: var(--text-color);
-    list-style-type: disc;
-    padding-left: 2rem;
-}
-
 .about-card ul li {
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.6rem;
+    color: var(--light-text-color);
+    line-height: 1.5;
 }
 
+
+/* Projects and Skills Sections: Consistent container styling */
+.services,
+.portfolio {
+    background: var(--bg-color); /* Consistent dark background */
+    padding: 12rem 9% 4rem;
+}
 
 .services h2 {
     margin-bottom: 5rem;
@@ -255,253 +359,84 @@ background: rgba(2, 5, 19, 0.3);
     gap: 2rem;
 }
 
-.services-container .services-box {
+/* Base styling for project/skill boxes */
+.services-container .services-box,
+.portfolio-container .services-box {
     flex: 1 1 30rem;
-    background: var(--snd-bf-color);
-    padding: 3rem 2rem 4rem;
-    border-radius: 2rem;
-    text-align: center;
-    border: .2rem solid var(--bg-color);
-    transition: .5s ease;
+    background: var(--snd-bf-color); /* Slightly lighter dark for boxes */
+    padding: 3.5rem 2.5rem 4.5rem;
+    border-radius: 1.5rem; /* Consistent border-radius */
+    border: .1rem solid rgba(255, 255, 255, 0.05); /* Very subtle, thin border */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Soft, subtle shadow */
+    transition: all 0.4s ease;
+    text-align: center; /* Center content within boxes */
 }
 
-.services-container .services-box:hover {
-    border-color: var(--main-color);
-    transform: scale(1.02);
+.services-container .services-box:hover,
+.portfolio-container .services-box:hover {
+    border-color: var(--main-color); /* Red border on hover */
+    transform: translateY(-8px); /* Lift effect */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(204, 0, 0, 0.3); /* More pronounced shadow with red glow */
 }
 
-.services-box i {
-    font-size: 7rem;
-    color: var(--main-color);
-}
-
-.services-box h3 {
-    font-size: 1.8rem;
-    color: var(--main-color);
-}
-
-.services-box p {
-    font-size: 1.2rem;
-    margin: 1rem 0 3rem;
-}
-
-.bg-img {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-}
-
-.bg-img:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-image: linear-gradient(to bottom right, #002f4b, #dc4225);
-    opacity: .6;
-}
-
-.portfolio {
-    background: var(--snd-bf-color);
-}
-
-.portfolio h2 {
-    margin-bottom: 4rem;
-}
-
-.portfolio-container {
-    display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 2rem;
-}
-
-.portfolio-container .portfolio-box {
-        flex: 1 1 30rem;
-        background: var(--snd-bf-color);
-        padding: 3rem 2rem 4rem;
-        border-radius: 2rem;
-        text-align: center;
-        border: .2rem solid var(--bg-color);
-        transition: .5s ease;
-}
-
-.portfolio-container .portfolio-box:hover {
-    border-color: var(--main-color);
-    transform: scale(1.02);
-}
-
-.portfolio-layer {
-    margin: 2rem;
-}
-
-.portfolio-layer h4 {
-    color: var(--main-color);
-    margin-bottom: 1rem;
-}
-
-.portfolio-layer ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    list-style: none;
-    padding: 0;
-}
-
-.portfolio-layer li {
-    flex: 1 1 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.portfolio-layer img {
-    width: 5rem;
-    height: auto;
-    transition: transform 0.3s ease;
-}
-
-.portfolio-layer img:hover {
-    transform: scale(1.1);
-}
-
-/* Responsive Design */
-
-/* Extra small screens (max-width: 480px) */
-@media screen and (max-width: 480px) {
-    .home-content h3 {
-        font-size: 1.8rem;
-        /* Even smaller font size */
-    }
-
-    .home-content h1 {
-        font-size: 3.2rem;
-        /* Even smaller font size */
-    }
-        .about-card {
-            flex: 1 1 100%;
-    
-        }
-}
-
-@media screen and (max-width: 768px) {
-    .about-content {
-            flex-direction: column;
-            /* Switch to column on smaller screens */
-        }
-     .home-content h3 {
-        font-size: 2.4rem;
-        /* Smaller font size */
-    }
-
-    .home-content h1 {
-        font-size: 4.2rem;
-        /* Smaller font size */
-    }
-        .about-card {
-            flex: 1 1 100%;
-    
-        }
-    .home {
-            flex-direction: column-reverse;
-            text-align: center;
-        }
-    
-        .home-content {
-            max-width: 100%;
-        }
-    
-        .home-img img {
-            margin-bottom: 20px;
-            width: 50vw;
-        }
-    .navbar {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        /* Initially hidden */
-        height: 100vh;
-        width: 250px;
-        background: rgba(2, 5, 19, 0.8);
-        /* Darker semi-transparent background */
-        backdrop-filter: blur(15px);
-        /* Stronger blur effect */
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        padding: 2rem;
-        z-index: 200;
-        transition: right 0.3s ease;
-        /* Smooth slide-in transition */
-    }
-
-    .navbar a {
-        margin: 1rem 0;
-        font-size: 2rem;
-    }
-
-    #menu-icon {
-        display: block;
-        /* Show menu icon */
-        font-size: 3.6rem;
-        cursor: pointer;
-    }
-
-    .navbar.active {
-        right: 0;
-        /* Show sidebar */
-    }
-}
-
-/* Force all project cards to the same fixed size */
+/* Project Cards Specifics (with fixes for text visibility and scrolling) */
 .services-box.project-card {
     position: relative;
     width: 100%;
-    max-width: 360px;   /* Set max width for all cards */
-    height: 250px;       /* Fixed height for all cards */
+    max-width: 400px; /* Max width for all project cards */
+    height: 300px; /* Fixed height for consistent look on larger screens */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 2rem;
-    overflow: hidden;
+    border-radius: 1.5rem;
+    overflow: hidden; /* Important for containing content and overlay */
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    padding: 2rem;
+    justify-content: flex-end; /* Align content to bottom if no overlay */
+    padding: 2rem; /* Internal padding */
     color: white;
     transition: transform 0.3s ease;
-    flex: 1 1 360px; /* Ensures responsive grid sizing */
+    flex: 1 1 380px; /* Adjust flex basis to allow more width for cards */
     margin: 1rem;
+    border: none; /* Remove default border, overlay will handle visual border */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4); /* Stronger shadow */
 }
 
-
-/* Card Front (shown by default) */
+/* Card Front: Shows project image, dims on hover */
 .card-front {
-    position: relative;
+    position: absolute;
+    inset: 0; /* Covers the whole card */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    opacity: 1;
+    transition: opacity 0.5s ease;
     z-index: 1;
-    text-align: center;
-    transition: opacity 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent overlay to darken image */
 }
 
 .card-front h3 {
-    font-size: 2rem;
+    font-size: 2.2rem; /* Larger project title on front */
     font-weight: bold;
     margin-bottom: 0.8rem;
     color: white;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
-
-
-/* Arrow Animation */
+/* Hover Hint: Animated arrow to indicate interaction */
 .hover-hint {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: #ffffffcc;
     animation: bounceFade 2s ease-in-out infinite;
-    pointer-events: none;
+    pointer-events: none; /* Allows clicks to pass through */
     display: inline-block;
+    position: absolute;
+    bottom: 2rem; /* Position above bottom edge */
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 @keyframes bounceFade {
@@ -510,62 +445,357 @@ background: rgba(2, 5, 19, 0.3);
         opacity: 0.9;
     }
     50% {
-        transform: translateY(-10px);
+        transform: translateY(-15px); /* More pronounced bounce */
         opacity: 1;
     }
 }
 
-/* Hide front content + hint on hover/tap */
+/* Hide front content and hint on hover */
 .project-card:hover .card-front,
+.project-card.hovered .card-front {
+    opacity: 0;
+    visibility: hidden;
+}
 .project-card:hover .hover-hint,
-.project-card.hovered .card-front,
 .project-card.hovered .hover-hint {
     opacity: 0;
     animation: none;
+    visibility: hidden;
 }
 
-/* Overlay that appears on hover */
+/* Project Overlay: Reveals project details on hover (fixed for content visibility and scrolling) */
 .project-overlay {
     position: absolute;
     inset: 0;
-    background-color: rgba(2, 5, 19, 0.92);
+    background-color: rgba(0, 0, 0, 0.95); /* Nearly opaque black overlay */
     opacity: 0;
-    transform: translateY(20px);
+    transform: scale(0.95); /* Start slightly scaled down for smooth transition */
     transition: opacity 0.5s ease, transform 0.5s ease;
+    
+    /* Flexbox for vertical centering of content within overlay */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    overflow-y: auto;
-    border-radius: 2rem;
     flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+
+    text-align: center;
+    overflow-y: auto; /* THIS IS KEY: Enables vertical scrolling when content overflows */
+    border-radius: 1.5rem;
+    padding: 2.5rem; /* Increased padding around content */
+    box-shadow: inset 0 0 10px rgba(204, 0, 0, 0.5); /* Subtle inner red glow */
     z-index: 2;
+
+    height: 100%; /* Make sure it takes full height of its parent .services-box.project-card */
 }
 
-/* Show overlay on hover/tap */
+/* Show overlay on hover */
 .project-card:hover .project-overlay,
 .project-card.hovered .project-overlay {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1); /* Scale to full size on hover */
 }
 
-/* Inside overlay */
+/* Project Details Text Styling (with added flexibility) */
 .project-details {
-    max-width: 90%;
+    max-width: 95%; /* Give it a bit more width inside the padding */
+    display: flex; /* Make it a flex container */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center content vertically within project-details */
+    align-items: center; /* Center text within project-details */
+    height: 100%; /* Allow it to take full height of its flex parent if needed */
+    box-sizing: border-box; /* Crucial for padding calculation */
 }
 
 .project-details h3 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: var(--main-color);
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.8rem; /* Slightly reduced margin-bottom for tighter packing */
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    word-break: break-word; /* Allow long words to break to next line */
+    overflow-wrap: break-word; /* Modern version of word-break */
 }
 
 .project-details p {
-    font-size: 1.4rem;
-    color: var(--text-color);
-    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    color: var(--light-text-color);
+    margin-bottom: 1.2rem; /* Adjusted margin before button */
+    line-height: 1.5;
+    flex-grow: 1; /* Allow paragraph to take up available space */
+    
+    /* Enabled scrolling specifically for the paragraph content if it overflows */
+    overflow: auto;
+    -webkit-overflow-scrolling: touch; /* Smoother scrolling on iOS */
 }
 
 .project-details .btn {
-    margin-top: 1rem;
+    margin-top: 0.5rem; /* Reduced margin from paragraph */
+    flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+/* Portfolio Section (Skills) */
+.portfolio h2 {
+    margin-bottom: 4rem;
+}
+
+.portfolio-layer {
+    margin: 2rem;
+}
+
+.portfolio-layer h4 {
+    color: var(--main-color);
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.portfolio-layer ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem; /* More space between icons */
+    justify-content: center; /* Center the icons */
+    list-style: none;
+    padding: 0;
+}
+
+.portfolio-layer li {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Skill Icons: Start grayscale, full color with glow on hover */
+.portfolio-layer img {
+    width: 6.5rem; /* Larger skill icons */
+    height: auto;
+    filter: grayscale(100%) brightness(150%); /* Subtle silver/metallic look */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.portfolio-layer img:hover {
+    transform: scale(1.15) translateY(-5px); /* Lift and enlarge */
+    filter: grayscale(0%) brightness(100%) drop-shadow(0 0 10px var(--main-color)); /* Full color with red glow */
+}
+
+/* Responsive Design */
+
+/* Sidebar Overlay for Mobile Menu */
+/* IMPORTANT: Changed from being created by JS to directly in HTML, positioned within header */
+.sidebar-overlay {
+    position: fixed; /* Keep fixed to cover the whole viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0); /* Start fully transparent */
+    z-index: 150; /* Lower than active navbar (200), higher than content */
+    opacity: 0; /* Important for visual fade */
+    transition: opacity 0.3s ease; /* Only transition opacity */
+    
+    /* CRITICAL CHANGE: Use display: none when inactive */
+    display: none; 
+    /* pointer-events handled by JS for more precise control (not by CSS for active/inactive state) */
+}
+
+.sidebar-overlay.active {
+    background-color: rgba(0, 0, 0, 0.7); /* Darker overlay when active */
+    opacity: 1; /* Make it opaque */
+    /* CRITICAL CHANGE: Use display: block when active */
+    display: block; 
+    /* pointer-events handled by JS for more precise control */
+}
+
+/* Mobile Close Button Styling */
+.close-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 3rem; /* Large enough to be easily tapped */
+    cursor: pointer;
+    position: absolute; /* Position within the navbar */
+    top: 2rem;
+    right: 2rem;
+    padding: 1rem; /* Increase clickable area */
+    display: none; /* Hidden by default, shown in media query */
+}
+
+
+/* Media Queries for various screen sizes */
+@media screen and (max-width: 992px) {
+    html {
+        font-size: 58%; /* Adjust base font size for medium screens */
+    }
+    .home-content h1 {
+        font-size: 5.5rem;
+    }
+    .home-content h3 {
+        font-size: 3.2rem;
+    }
+    .home-img img {
+        width: 35vw;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 56%; /* Slightly smaller base font for tablet/small laptop */
+    }
+    .home {
+        flex-direction: column-reverse; /* Stack elements vertically */
+        text-align: center;
+        padding-top: 8rem;
+    }
+
+    .home-content {
+        max-width: 100%;
+        padding: 0 2rem;
+    }
+
+    /* Adjust picture and name size for mobile */
+    .home-img img {
+        margin-bottom: 20px;
+        width: 60vw; /* Larger image on mobile */
+    }
+    .home-content h1 {
+        font-size: 4.8rem; /* Smaller name on mobile */
+    }
+    .home-content h3 {
+        font-size: 2.8rem; /* Smaller heading on mobile */
+    }
+
+
+    .about-content {
+        flex-direction: column; /* Stack about cards */
+    }
+
+    .about-card {
+        flex: 1 1 100%; /* Full width */
+        padding: 3rem; /* Less padding on small screens */
+    }
+    .sub-about {
+        flex-direction: column; /* Stack education cards */
+        align-items: stretch;
+    }
+
+    .header {
+        padding: 1.5rem 5%; /* Less padding for mobile header */
+    }
+
+    /* Mobile Navbar (Sidebar) */
+    .navbar {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Initially hidden off-screen */
+        height: 100vh;
+        width: 280px; /* Sidebar width */
+        background: rgba(25, 25, 25, 0.85); /* Slightly brighter background for mobile */
+        backdrop-filter: blur(25px); /* Stronger blur effect */
+        flex-direction: column;
+        justify-content: flex-start; /* Align links to the top */
+        align-items: flex-start; /* Align links to the left */
+        padding: 2rem;
+        padding-top: 8rem; /* Extra padding at the top to clear the close button */
+        z-index: 200; /* Higher than overlay */
+        transition: right 0.3s ease; /* Smooth slide-in transition */
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5); /* Shadow for slide-out effect */
+        /* pointer-events handled by JS for precise control (default to none) */
+        pointer-events: none; 
+    }
+    .navbar.active {
+        right: 0; /* Slide sidebar into view */
+        /* pointer-events handled by JS for precise control (set to auto when active) */
+        pointer-events: auto; 
+    }
+
+
+    /* IMPORTANT: Ensure individual links are clickable and spaced correctly */
+    .navbar a {
+        margin: 0.8rem 0; /* Slightly reduced margin as padding will add more space */
+        padding: 1rem 2rem; /* Add generous padding around each link for better touch targets and spacing */
+        line-height: 1.2; /* Ensure a comfortable line height, especially if text wraps */
+        width: 100%; /* Make links full width for consistent touch area */
+        text-align: left; /* Align text to the left */
+        transition: background-color 0.3s ease, color 0.3s ease; /* Add transition for hover/active */
+        /* pointer-events handled by JS for precise control */
+        pointer-events: auto; /* Ensure individual links are clickable */
+        position: relative; /* Needed for z-index to work */
+        z-index: 201; /* Ensure links are above anything else */
+    }
+
+    .navbar a:hover,
+    .navbar a.active {
+        background-color: rgba(204, 0, 0, 0.2); /* Subtle red highlight on hover/active */
+        color: var(--main-color); /* Ensure text color is red */
+    }
+
+    #menu-icon {
+        display: block; /* Show menu icon */
+        font-size: 3.6rem;
+        cursor: pointer;
+    }
+    .close-btn {
+        display: block; /* Show close button on mobile */
+    }
+
+    .social-media a {
+        margin: 2rem 1rem; /* Adjust spacing for mobile */
+    }
+
+    .resume-contant {
+        flex-direction: column;
+        gap: 2rem; /* More compact on mobile */
+    }
+
+    .btn {
+        width: 100%; /* Full width buttons on mobile */
+        text-align: center;
+    }
+
+    .services-box.project-card {
+        max-width: 95%; /* Allow cards to take up more width on mobile */
+        width: 95%;
+        height: auto; /* Allow height to adjust based on content */
+        min-height: 250px; /* Ensure a minimum size */
+        padding: 1.5rem; /* Adjust padding if needed */
+    }
+    .project-details h3 {
+        font-size: 2.2rem; /* Adjust title size for mobile */
+    }
+    .project-details p {
+        font-size: 1.5rem; /* Adjust paragraph size for mobile */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 55%; /* Even smaller base font size for very small screens */
+    }
+    .home-content h1 {
+        font-size: 4rem; /* Further decrease name size */
+    }
+    .home-content h3 {
+        font-size: 2.5rem; /* Further decrease heading size */
+    }
+    .home-img img {
+        width: 70vw;
+    }
+    .about-card {
+        padding: 2.5rem;
+    }
+    .heading {
+        font-size: 4rem;
+    }
+    .about-heading h2 {
+        font-size: 2.5rem;
+    }
+    .services-box.project-card {
+        height: auto; /* Ensure height is auto for very small screens */
+        min-height: 200px; /* Smaller min-height */
+        padding: 1rem; /* Less internal padding */
+    }
 }
