@@ -69,6 +69,38 @@
         <div class="about-content">
             <div class="about-card">
                 <div class="about-heading">
+                    <h2>Education</h2>
+                </div>
+                <div class="sub-about">
+                    <div>
+                        <h3><a href="https://my.usf.edu/myusf/home_myusf/index" target="_blank" rel="noopener noreferrer">University
+                                of South Florida <i class="fa-solid fa-arrow-up-right-from-square"></i></a>, Tampa.</h3>
+                        <span>Aug 2023 – May 2025</span>
+                        <div>
+                            <h6><a href="https://www.usf.edu/business/" target="_blank" rel="noopener noreferrer">Muma
+                                    college of Business</a></h6>
+                        </div>
+                        <div class="work">
+                            <ul>
+                                <li>Master of Science, Computer Systems Analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h3><a href="https://www.nitw.ac.in/" target="_blank" rel="noopener noreferrer">National
+                                Institute of Technology Warangal <i class="fa-solid fa-arrow-up-right-from-square"></i></a>, India.
+                        </h3>
+                        <span>July 2017 – May 2021</span>
+                        <div class="work">
+                            <ul>
+                                <li>Bachelor of Technology</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-card">
+                <div class="about-heading">
                     <h2>Work Experience</h2>
                 </div>
                 <div>
@@ -95,45 +127,31 @@
                     </ul>
                 </div>
             </div>
-            <div class="about-card">
-                <div class="about-heading">
-                    <h2>Education</h2>
-                </div>
-                <div class="sub-about">
-                    <div>
-                        <h3><a href="https://my.usf.edu/myusf/home_myusf/index" target="_blank"
-                                rel="noopener noreferrer">University of South Florida <i
-                                    class="fa-solid fa-arrow-up-right-from-square"></i></a>, Tampa.</h3>
-                        <span>Aug 2023 – May 2025</span>
-                        <div>
-                            <h6><a href="https://www.usf.edu/business/" target="_blank" rel="noopener noreferrer">Muma
-                                    college of Business</a></h6>
-                        </div>
-                        <div class="work">
-                            <ul>
-                                <li>Master of Science, Computer Systems Analysis</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div>
-                        <h3><a href="https://www.nitw.ac.in/" target="_blank" rel="noopener noreferrer">National
-                                Institute of Technology Warangal <i
-                                    class="fa-solid fa-arrow-up-right-from-square"></i></a>, India.</h3>
-                        <span>July 2017 – May 2021</span>
-                        <div class="work">
-                            <ul>
-                                <li>Bachelor of Technology</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </section>
 
     <section class="services" id="services">
         <h2 class="heading">My <span>Projects</span></h2>
         <div class="services-container">
+            <div class="services-box project-card" style="background-image: url('./Images/recipe-app.png');">
+                <div class="card-front">
+                    <span class="hover-hint"><i class="fa-solid fa-arrow-up"></i></span>
+                </div>
+                <div class="project-overlay">
+                    <div class="project-details">
+                        <h3>Recipe AI App</h3>
+                        <p>
+                            Built a full-stack AI-powered recipe app for ingredient-based meal planning using React (Vite) and Tailwind CSS on the
+                            frontend, and Node.js/Express with MongoDB Atlas on the backend. Integrated the Spoonacular API for dynamic recipe
+                            generation, implemented JWT and bcrypt for secure authentication, and deployed via Vercel and Render, showcasing
+                            full-stack development, API integration, and cloud deployment skills.
+                        </p>
+                        <a href="https://recipe-app-react-cyan.vercel.app/" class="btn" target="_blank"
+                            rel="noopener noreferrer">Deployed App</a>
+                    </div>
+                </div>
+            </div>
             <div class="services-box project-card" style="background-image: url('./Images/housing.png');">
                 <div class="card-front">
                     <span class="hover-hint"><i class="fa-solid fa-arrow-up"></i></span>
@@ -147,6 +165,25 @@
                         </p>
                         <a href="http://myweb.usf.edu/~ganeshtalluri/index.html" class="btn" target="_blank"
                             rel="noopener noreferrer">Website</a>
+                    </div>
+                </div>
+            </div>
+            <div class="services-box project-card" style="background-image: url('./Images/midas.png');">
+                <div class="card-front">
+                    <span class="hover-hint"><i class="fa-solid fa-arrow-up"></i></span>
+                </div>
+                <div class="project-overlay">
+                    <div class="project-details">
+                        <h3>Forage Midas</h3>
+                        <p>
+                            Developed backend components of a transaction processing system as part of the JPMorgan
+                            Chase Software Engineering Virtual Experience on Forage. Implemented Kafka consumers for
+                            real-time message processing, applied transactional validation, persisted data using JPA
+                            with H2, and integrated an external API. Built RESTful services for balance queries.
+                            Tools: Java, Spring Boot, Apache Kafka, JPA, H2, REST API.
+                        </p>
+                        <a href="https://github.com/GaneshT999/forage-midas" class="btn" target="_blank"
+                            rel="noopener noreferrer">Source Code</a>
                     </div>
                 </div>
             </div>
@@ -182,44 +219,8 @@
                     </div>
                 </div>
             </div>
-            <div class="services-box project-card" style="background-image: url('./Images/midas.png');">
-                <div class="card-front">
-                    <span class="hover-hint"><i class="fa-solid fa-arrow-up"></i></span>
-                </div>
-                <div class="project-overlay">
-                    <div class="project-details">
-                        <h3>Forage Midas</h3>
-                        <p>
-                            Developed backend components of a transaction processing system as part of the JPMorgan
-                            Chase Software Engineering Virtual Experience on Forage. Implemented Kafka consumers for
-                            real-time message processing, applied transactional validation, persisted data using JPA
-                            with H2, and integrated an external API. Built RESTful services for balance queries.
-                            Tools: Java, Spring Boot, Apache Kafka, JPA, H2, REST API.
-                        </p>
-                        <a href="https://github.com/GaneshT999/forage-midas" class="btn" target="_blank"
-                            rel="noopener noreferrer">Source Code</a>
-                    </div>
-                </div>
-            </div>
-            <div class="services-box project-card" style="background-image: url('./Images/recipe-app.png');">
-                <div class="card-front">
-                    <span class="hover-hint"><i class="fa-solid fa-arrow-up"></i></span>
-                </div>
-                <div class="project-overlay">
-                    <div class="project-details">
-                        <h3>Recipe Management App</h3>
-                        <p>
-                            Built a full-stack Recipe Management app using React, Spring Boot, and MySQL, with JWT for
-                            authentication and BCrypt for password hashing. Implemented role-based authorization,
-                            allowing admins or recipe creators to edit/delete recipes. The frontend uses React and
-                            Tailwind CSS, while the backend leverages Spring Boot, Spring Security, and MySQL for data
-                            management.
-                        </p>
-                        <a href="https://github.com/GaneshT999/recipe-app" class="btn" target="_blank"
-                            rel="noopener noreferrer">Source Code</a>
-                    </div>
-                </div>
-            </div>
+            
+            
         </div>
     </section>
 
